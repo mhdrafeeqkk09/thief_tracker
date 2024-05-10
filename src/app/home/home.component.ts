@@ -2,11 +2,12 @@ import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MainService } from '../main.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -14,18 +15,23 @@ export class HomeComponent {
 
   @ViewChild('videoElement', { static: false }) videoElement: any;
   thiefName: string = "";
+  isAdmin = true;
 
   constructor(private service: MainService, private router: Router) {}
 
   ngOnInit() {
     this.service.userName.subscribe(res => {
       if(res === 'admin') {
-        alert('You are logged as a admin...');
-      } else if (res === 'user') {
-        alert('You are logged as a User...');
+        this.isAdmin = true;
+        setTimeout(() => {
+          alert('Hey Welcome Admin');
+        }, 0);
       } else {
-        this.router.navigateByUrl('/login');
-      }
+        this.isAdmin = false;
+        setTimeout(() => {
+          alert('Hey Welcome ' + res);
+        }, 0);
+      } 
     })
   }
 
