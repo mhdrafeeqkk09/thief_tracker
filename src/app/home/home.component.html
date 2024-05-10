@@ -1,8 +1,19 @@
 <div class="centered-container">
     <div class="centered-content">
-        <div>
+        <div *ngIf="isAdmin">
+            <form action="">
+                <div>
+                    <video #videoElement autoplay playsinline></video>
+                    <div class="form-group">
+                        <input class="thief-name" type="text" id="thief" name="thief" [(ngModel)]="thiefName"
+                            placeholder="Enter Thief Name" required>
+                    </div>
+                </div>
+                <button class="button" type="submit" (click)="uploadImg()">Upload Thief Image</button>
+            </form>
+        </div>
+        <div *ngIf="!isAdmin">
             <video #videoElement autoplay playsinline></video>
         </div>
-        <button class="button" (click)="uploadImg()">Upload Thief Image</button>
     </div>
 </div>

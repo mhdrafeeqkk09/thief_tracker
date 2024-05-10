@@ -13,6 +13,7 @@
     display: inline-block;
     padding: 10px 20px;
     font-size: 16px;
+    margin-top: 6px;
     font-weight: bold;
     text-decoration: none;
     color: #fff;
@@ -25,4 +26,19 @@
 
   .button:hover {
     background-color: #0056b3;
+  }
+
+  input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+  }
+  
+  input[type="text"]:focus {
+    outline: none;
+    border-color: dodgerblue;
+    box-shadow: 0 0 5px rgba(30, 144, 255, 0.5);
   }
